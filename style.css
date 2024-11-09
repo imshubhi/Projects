@@ -1,0 +1,176 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #96967d, #1a456c);
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(20, 180, 192, 0.9);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.output {
+    grid-column: 1 / -1;
+    background-color: rgb(0, 0, 0 ,0.95);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 15px;
+    flex-direction: column;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.output .previous-operand {
+    color: rgba(245, 245, 220, 0.75);
+    font-size: 1.5rem;
+}
+
+.output .current_operand {
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem;
+}
+
+
+/*
+```css
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+```
+
+- `*`, `*::before`, `*::after`: This targets all elements, along with their `::before` and `::after` pseudo-elements, which ensures that all elements follow the same styling rules.
+- `box-sizing: border-box;`: This makes sure that padding and border are included in the total width and height of elements. This is used to make layout sizing more predictable, especially in responsive designs.
+- `font-family: Georgia, 'Times New Roman', Times, serif;`: Sets a serif font for all elements, ensuring a classic, readable style.
+- `font-weight: normal;`: Makes sure that the default font weight is set to "normal," avoiding any default bolding.
+
+```css
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00ff6c);
+}
+```
+
+- `padding: 0; margin: 0;`: Removes any default spacing around the body element to achieve a clean layout.
+- `background: linear-gradient(to right, #00AAFF, #00ff6c);`: Applies a background gradient that transitions from a blue color (`#00AAFF`) on the left to a green color (`#00ff6c`) on the right. This adds visual appeal to the calculator background.
+
+```css
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+```
+
+- `display: grid;`: Defines the calculator layout as a grid, allowing for precise control over the arrangement of the buttons.
+- `justify-content: center; align-content: center;`: Centers the grid within the page both horizontally and vertically.
+- `min-height: 100vh;`: Ensures that the grid takes up at least the full height of the viewport.
+- `grid-template-columns: repeat(4, 100px);`: Creates four equal-width columns, each 100px wide, for a consistent button layout.
+- `grid-template-rows: minmax(120px, auto) repeat(5, 100px);`: Creates rows where:
+  - The first row is flexible (`minmax(120px, auto)`) and will adjust between 120px and any needed height.
+  - The next five rows are each fixed at 100px, providing consistent button sizes.
+
+```css
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+```
+
+- `cursor: pointer;`: Changes the cursor to a pointer when hovering over buttons, indicating they’re clickable.
+- `font-size: 2rem;`: Increases the button text size to improve readability.
+- `border: 1px solid white;`: Adds a white border to each button to define button boundaries visually.
+- `outline: none;`: Removes the default outline that browsers often apply to focused buttons.
+- `background-color: rgba(255, 255, 255, 0.75);`: Sets a light white color for the button background with a slight transparency (`0.75`), giving the buttons a softer appearance.
+
+```css
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 155, 0.9);
+}
+```
+
+- `background-color: rgba(255, 255, 155, 0.9);`: Changes the button background color to a yellowish tint (`rgba(255, 255, 155, 0.9)`) when hovered. This provides visual feedback to the user.
+
+```css
+.span-two {
+    grid-column: span 2;
+}
+```
+
+- `grid-column: span 2;`: Makes buttons with this class (`.span-two`) span across two columns, useful for larger buttons like "AC" and "=".
+
+```css
+.output {
+    grid-column: 1 / -1;
+    background-color: black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+```
+
+- `grid-column: 1 / -1;`: Makes the output area span the full width of the grid, covering all four columns.
+- `background-color: black;`: Sets a black background color for the output area, creating contrast with the button area.
+- `display: flex; align-items: flex-end; justify-content: space-around; flex-direction: column;`: Uses Flexbox to align content within the output area, stacking elements vertically with space around each.
+- `padding: 10px;`: Adds padding around the output content.
+- `word-break: break-all; word-wrap: break-word;`: Ensures text breaks when it reaches the edge, preventing overflow and keeping content within the output area.
+
+```css
+.output .previous-operand {
+    color: rgba(245, 245, 220, 0.75);
+    font-size: 1.5rem;
+}
+```
+
+- `color: rgba(245, 245, 220, 0.75);`: Sets a light beige color with some transparency (`0.75`) for the `previous-operand` text, providing a softer display.
+- `font-size: 1.5rem;`: Sets a smaller font size than the main display for the previous operand, distinguishing it as secondary information.
+
+```css
+.output .current_operand {
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem;
+}
+```
+
+- `color: rgb(255, 255, 255);`: Sets the text color to pure white for clear visibility.
+- `font-size: 2.5rem;`: Sets a larger font size for the `current_operand` display, making it the main focus for the user’s attention.*/
